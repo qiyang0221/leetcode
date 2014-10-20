@@ -38,9 +38,9 @@ int main(){
 	Solution s;
 	
 	vector<int> num;
-	num.push_back(3);
 	num.push_back(2);
 	num.push_back(1);
+	//num.push_back(1);
 	
 	cout<<s.findMin(num)<<endl;
 } 

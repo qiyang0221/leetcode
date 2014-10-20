@@ -3,7 +3,9 @@
 //转换一个整数
 //
 //solution:
-//不需要担心溢出，也不需要但是负数 
+//不需要担心溢出，也不需要但是负数
+//复杂度为log(n)
+ 
 #include<iostream>
 #include<cstdio>
 #include<cstdlib>

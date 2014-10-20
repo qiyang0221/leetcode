@@ -1,3 +1,10 @@
+//
+//description:
+//求目标值得上限和下限
+//
+//solution:
+//二分求上限和下限
+ 
 #include<cstdio>
 #include<cstdlib>
 #include<iostream>
@@ -10,43 +17,26 @@ public:
     vector<int> searchRange(int A[], int n, int target) {
         int left = 0,right = n-1;
         int mid;
-        while(left < right){
+        while(A[left] != target && left < right){
 			mid =  left + (right -left) / 2;
-			if(A[mid] == target){
-				break;
-			}else if(A[mid] < target){
+			if(A[mid] < target){
 				left = mid + 1;
 			}else{
-				right = mid - 1;
-			}  	
-        }
-        mid = left + (right - left) / 2;
-        
-        while(left < mid){
-        	int mm = left + (mid-left)/2;
-        	if(A[mm] == target){
-        		for(;A[left] < target;left++);
-        		break;
-        	}
-        		
-        	else
-        		left = mm+1;
+				left++;
+			}
         }
         
-        while(right > mid){
-        	int mm = mid + (right-mid)/2;
-        	if(A[mm] == target){
-        		if(A[right] > target)
-        		for(;A[right] > target;right--);
-        		break;
+        while(left < right && A[right] != target){
+        	mid = left + (right - left)/2;
+        	if(A[mid] > target){
+        		right = mid - 1;
+        	}else{
+        		right--;
         	}
-        		
-        	else
-        		right = mm - 1;
         }
         
         vector<int> res;
-        if(A[mid] == target){	
+        if(left <= right && A[left] == target){	
 	        res.push_back(left);
 	        res.push_back(right);
         }else{
@@ -64,6 +54,6 @@ int main(){
 	
 	Solution s;
 	
-	vector<int> res = s.searchRange(A,9,3);
+	vector<int> res = s.searchRange(A,9,0);
 	cout<<res[0]<<" "<<res[1]<<endl;
 }

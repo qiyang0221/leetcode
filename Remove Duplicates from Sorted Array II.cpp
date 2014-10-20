@@ -10,7 +10,24 @@ public:
 			A[i] = A[i+1];
 	}
 	
-    int removeDuplicates(int A[], int n) {
+	int removeDuplicates(int A[],int n){
+		if(n <= 2)
+			return n;
+		int index = 1;
+		for(int i=2;i<n;i++){
+			if(A[index] != A[index-1]){
+				A[++index] = A[i];
+			}else{
+				if(A[i] != A[index]){
+					A[++index] = A[i];
+				}
+			}
+		}
+		
+		return index+1;
+	}
+	
+    /*int removeDuplicates(int A[], int n) {
         if(n <= 2)
         	return n;
         int pre = 0, cur = 1,next = 2;
@@ -26,14 +43,14 @@ public:
         }
         
         return n;
-    }
+    }*/
 };
 
 int main(){
-	int A[] = {1,1,1,2,5,5,5};
+	int A[] = {1,3,3,3};
 	
 	Solution s;
-	int len = s.removeDuplicates(A,7);
+	int len = s.removeDuplicates(A,4);
 	for(int i=0;i<len;i++){
 		cout<<A[i]<<" ";
 	}

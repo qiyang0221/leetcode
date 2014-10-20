@@ -1,3 +1,15 @@
+//
+//description:
+//给定两个目标单词start,end，以及字典
+//求从start到end的距离
+//
+//solution:
+//这是一道最短路径的题目，采用bfs访问即可
+//单词替换采用26个字母进行替换，供替换单词长度*26次
+//bfs为了求路径，需要vector<int> prev记录每个点的先驱
+//bfs为了防止重复访问，需要先把同一级的点标记
+//获得路径之后，dfs访问即可 
+
 #include<iostream>
 #include<cstdio>
 #include<cstdlib>

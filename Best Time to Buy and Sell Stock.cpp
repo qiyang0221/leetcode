@@ -1,3 +1,11 @@
+//
+//description:
+//给一个数组，第i个元素表示第i天的价格，求进行一次交易，获得的最大收益,买在卖之前 
+//
+//solution:
+//用一个变量记录i之前的最小值，然后逐个遍历，求得最大收益
+ 
+
 #include<iostream>
 #include<cstdio>
 #include<cstdlib>
