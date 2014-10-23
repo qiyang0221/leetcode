@@ -60,16 +60,77 @@ public:
     }
 };
 
+/*class Solution {
+public:
+    void recoverTree(TreeNode* root) {
+        pair<TreeNode*, TreeNode*> broken;
+        TreeNode* prev = NULL;
+        TreeNode* cur = root;
+
+        while (cur != NULL) {
+            if (cur->left == NULL) {
+                detect(broken, prev, cur);
+                prev = cur;
+                cur = cur->right;
+            } else {
+                TreeNode* node = cur->left;
+
+                while (node->right != NULL && node->right != cur)
+                    node = node->right;
+
+                if (node->right == NULL) {
+                    node->right = cur;
+                    //prev = cur; 不能有这句！因为cur还没有被访问
+                    cur = cur->left;
+                } else {
+                    detect(broken, prev, cur);
+                    node->right = NULL;
+                    prev = cur;
+                    cur = cur->right;
+                }
+            }
+        }
+
+        swap(broken.first->val, broken.second->val);
+    }
+
+    void detect(pair<TreeNode*, TreeNode*>& broken, TreeNode* prev,
+            TreeNode* current) {
+        if (prev != NULL && prev->val > current->val) {
+            if (broken.first == NULL) {
+                broken.first = prev;
+            } //不能用else，例如 {0,1}，会导致最后 swap时second为NULL，
+              //会 Runtime Error
+            broken.second = current;
+        }
+    }
+    
+    void inorderTraverse(TreeNode * root){
+    	if(root == NULL)
+    		return;
+    	inorderTraverse(root->left);
+    	cout<<root->val<<" ";
+    	inorderTraverse(root->right);
+    }
+};*/
+
 int main(){
 	Solution s;
 	
-	TreeNode * node1 = new TreeNode(2);
-	TreeNode * node2 = new TreeNode(3);
-	TreeNode * node3 = new TreeNode(1);
+	TreeNode * node1 = new TreeNode(4);
+	TreeNode * node2 = new TreeNode(2);
+	TreeNode * node3 = new TreeNode(5);
+	TreeNode * node4 = new TreeNode(6);
+	TreeNode * node5 = new TreeNode(4);
+	TreeNode * node6 = new TreeNode(7);
 	
 	
-	node1->right = node2;
-	node2->left = node3;
+	node1->left = node2;
+	node2->right = node3;
+	node1->right = node4;
+	node4->left = node5;
+	node4->right = node6;
+	
 	s.inorderTraverse(node1);
 	cout<<endl;
 	 

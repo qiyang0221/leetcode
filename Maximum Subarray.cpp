@@ -27,15 +27,17 @@ public:
         		if(A[i] > max)
         			max = A[i];
         	}
+        	cout<<max<<" ";
         }
+        cout<<endl;
         
         return max;
     }
 };
 
 int main(){
-	int A[] = {-2};
+	int A[] = {-4,5,-4,5,-4,5,-4,5,-4,5,-4,5,-4,5,-4,5,-4,5,-1000};
 	
 	Solution s;
-	cout<<s.maxSubArray(A,1)<<endl;
+	cout<<s.maxSubArray(A,19)<<endl;
 }
